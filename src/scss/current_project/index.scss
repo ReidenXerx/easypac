@@ -1,0 +1,275 @@
+$black: rgba(29, 29, 32, 1);
+$d_gray: rgba(42, 42, 46, 1);
+$l_gray: rgba(87, 87, 90, 1);
+$gray: rgba(50, 50, 55, 1);
+$yellow: rgba(255, 143, 0, 1);
+$white: rgba(250, 250, 250, 1);
+$transparent: rgba(255, 255, 255, 0);
+
+@import url("/node_modules/@fortawesome/fontawesome-free/css/all.min.css");
+
+@font-face {
+    font-family: "Myriad";
+    src: url("../fonts/MyriadPro-Bold.otf");
+    font-weight: 600;
+   }
+@font-face {
+   font-family: "Myriad";
+   src: url("../fonts/MyriadPro-Regular.otf");
+  }
+
+.flex { display: flex; }
+.f-d-column { flex-direction: column; }
+.f-d-row { flex-direction: row; }
+.a-i-center { align-items: center; }
+.a-i-start { align-items: flex-start; }
+.a-i-end { align-items: flex-end; }
+.j-c-center { justify-content: center; }
+.j-c-start { justify-content: flex-start; }
+.j-c-end { justify-content: flex-end; }
+.j-c-s-around { justify-content: space-around; }
+.j-c-s-between { justify-content: space-between; }
+.w100 { width: 100%; }
+
+html {
+  font-family: "Myriad";
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.application-header {
+  width: 100%;
+  height: RelativeUnits(30, 0.3, desktop-middle, horizontal);
+  background: $yellow;
+  color: $d_gray;
+  font-weight: 600;
+  position: fixed;
+}
+
+.application-body {
+  height: 100vh;
+  background: $white;
+  color: $l_gray;
+}
+.form-sturdy {
+  border-radius: 10px;
+}
+
+.login-form {
+  @include SetWidth-responsive(485, 0.5);
+  min-height: RelativeUnits(660, 0.5, desktop-middle, horizontal);
+  background: $d_gray;
+  padding-top: 10px;
+  padding-bottom: RelativeUnits(60, 0.5, desktop-middle, horizontal);
+
+  .logo-text {
+    font-weight: 600;
+  }
+  .logo-img {
+    @include SetWidth-responsive(170, 0.4);
+    margin-top: RelativeUnits(65, 0.5, desktop-middle, horizontal);
+    margin-bottom: RelativeUnits(90, 0.5, desktop-middle, horizontal);
+  }
+  input {
+    height: 38px;
+    @include SetWidth-responsive(280, 0.4);
+    padding-left: 10px;
+    background: $gray;
+    border: none;
+    border-radius: 5px;
+    color: $l_gray;
+  }
+  .fields-wrap {
+    margin-bottom: RelativeUnits(60, 0.5, desktop-middle, horizontal);
+  }
+  .field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .wait-for-it {
+    font-size: 24px;
+    margin-top: RelativeUnits(120, 0.5, desktop-middle, horizontal);
+    margin-bottom: RelativeUnits(45, 0.5, desktop-middle, horizontal);
+  }
+  .wait-for-it-lines {
+    height: 5px;
+    border-radius: 2px;
+    width: 170px;
+    background: url("../img/lines.svg");
+    background-repeat: repeat-x;
+    animation-name: MOVE-BG;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+@keyframes MOVE-BG {
+    from {
+        background-position: 0% 0%
+    }
+    to {
+        background-position: 300% 0%
+    }
+}
+.sexy-button {
+  font-size: 14px;
+  @include SetWidth-responsive(160, 0.4);
+  height: RelativeUnits(66, 0.3, desktop-middle, horizontal);
+  border-radius: 10px;
+  border: 1.5px solid $yellow;
+  color: $yellow;
+  background: $transparent;
+
+  &:hover {
+    background: $yellow;
+    color: $d_gray;
+  }
+}
+
+.workspace-body {
+  height: 100vh;
+  width: 100%;
+  background: $d_gray;
+
+  .workspace-items-wrap {
+    width: 100%;
+  }
+
+  .workspace-item {
+    padding-top: 60px;
+  }
+}
+
+.navigate-menu {
+  height: 100vh;
+  width: 155px;
+  background: $black;
+  padding-top: 60px;
+
+  .navigate-item {
+    @include SetMargins(vertical, 35, 35);
+  }
+  .navigate-icon {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+  .selected, .navigate-item:hover {
+    p { color: $white; }
+    i { color: $yellow; }
+  }
+}
+
+
+.sexy-list {
+  border-collapse: collapse;
+  font-size: 14px;
+  color: $white;
+  max-width: 100%;
+
+  .sexy-caption {
+    background: $yellow;
+    color: $black;
+    padding: 8px;
+  }
+
+  .sexy-head-line {
+    background: $black;
+  }
+
+  .sexy-cell {
+    border: 1px solid $black;
+    text-align: center;
+    padding: 8px;
+    width: 150px;
+
+    button {
+      width: 100%;
+      border: none;
+      background: $yellow;
+      color: $black;
+      padding: 4px;
+      margin: -4px;
+    }
+
+    input {
+      width: 100%;
+      background: $transparent;
+      border: none;
+      color: $yellow;
+      text-align: center;
+      font-family: 'Myriad';
+    }
+  }
+  .sexy-line:nth-child(even) {
+    background: $l_gray;
+  }
+  .sexy-line:nth-child(odd) {
+    background: $gray;
+  }
+}
+.w-min {
+  .sexy-window-body {
+    display: none !important;
+  }
+}
+.w-max {
+  width: 100vw !important;
+  height: 100vh !important;
+  .sexy-window-body {
+    min-height: 100% !important;
+  }
+}
+.sexy-window {
+  @include SetWidth-responsive(500, 0.3);
+  max-width: 100%;
+  max-height: 100vh;
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+
+  .sexy-window-head {
+    background: $yellow;
+    color: $d_gray;
+    font-weight: 600;
+    padding: 6px 12px;
+
+    i { color: $d_gray; background: $yellow; padding: 0 3px; }
+  }
+
+  .sexy-window-body {
+    background: $black;
+    overflow-x: auto;
+    min-height: 300px;
+  }
+}
+.multiple {
+  max-height: 30px;
+  margin: -8px 0;
+}
+.sexy-select {
+  background: $black !important;
+  border: none !important;
+  width: 100% !important;
+  color: $white !important;
+  appearance: none !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+
+  option {
+    border: none !important;
+  }
+}
+
+.sexy-dialog {
+  padding: 50px 16px;
+  input { width: 80%; }
+}
+.sexy-input {
+  background: $gray;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: $white;
+  margin-bottom: 50%;
+}
